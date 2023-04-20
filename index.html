@@ -17,7 +17,7 @@
     <!-- BODY  -->
     <div class="firstSection">
       <div class="mainText">
-        <p class="bigText">ЗАНИМАЙТЕСЬ STYLEX'OM</p>
+        <p class="bigText">ПОЛЬЗУЙТЕСЬ STYLE X'OM</p>
         <!-- <p class="smallText">NYAAAAAAAH!^w^</p> -->
       </div>
     </div>
@@ -98,7 +98,7 @@
         <input type="text" name="url" id="add-img-inp">
         <button onclick="init2()" class="submit">Submit</button>
         <img id="output" width="200" />	
-        <div id="label2"></div>
+        <!-- <div id="label2"></div> -->
 
         
       </div>
@@ -113,25 +113,28 @@
 
         
       </script>
-
+<div id="label2"></div>
+<!-- <div id="webcamm"></div> -->
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
 <script type="text/javascript">
     const URL2 = "https://teachablemachine.withgoogle.com/models/aV8um9gdY/";
 
     let model2, label2, maxPredictions2;
-
+    // let label2 = document.querySelector(".label2")
+    let labelContainer2 = document.getElementById("label2");
     async function init2() {
                 const modelURL = URL + "model.json";
                 const metadataURL = URL + "metadata.json";
         
-                model = await tmImage.load(modelURL, metadataURL);
-                maxPredictions2 = model.getTotalClasses();
-                    
-                labelContainer = document.getElementById("label2");
+                model2 = await tmImage.load(modelURL, metadataURL);
+                maxPredictions2 = model2.getTotalClasses();                               
+        
+                labelContainer2 = document.getElementById("label2");
                 for (let i = 0; i < maxPredictions2; i++) { 
-                    label2.appendChild(document.createElement("div"));
+                    labelContainer2.appendChild(document.createElement("div"));
                 }
+
             }
 
     async function predict2() {
@@ -139,13 +142,11 @@
                 for (let i = 0; i < maxPredictions2; i++) {
                     const classPrediction =
                         prediction[i].className + ": " + Math.round(prediction[i].probability.toFixed(2)*100);
-                        label2.childNodes[i].innerHTML = classPrediction;
+                        labelContainer2.childNodes[i].innerHTML = classPrediction;
                 }
             }
   
 </script>
-
-
 
       <h2>WEB CAMERA</h2>
       <div class="input_div2">
