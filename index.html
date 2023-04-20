@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="https://kit.fontawesome.com/20b729f850.js" crossorigin="anonymous"></script>
+    <title>HELLCATS</title>
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <div class="navbar">
+      <p class="logo">KURSEX。</p>
+    </div>
+
+    <!-- BODY  -->
+    <div class="firstSection">
+      <div class="mainText">
+        <p class="bigText">ЗАНИМАЙТЕСЬ KURSEX'OM</p>
+        <!-- <p class="smallText">NYAAAAAAAH!^w^</p> -->
+      </div>
+    </div>
+    </div>
+
+    <!-- JS -->
+
+<!-- <div class="webDiv">
+  <div id="webcam-container"></div>
+  <div id="webcam-container" class="webb"></div>
+<div id="label-container"></div>
+<div id="label-container" class="labell"></div>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+<script type="text/javascript">
+
+  
+
+    const URL = "https://teachablemachine.withgoogle.com/models/aV8um9gdY/";
+    
+
+    let model, webcam, labelContainer, maxPredictions;
+
+    var img1 = document.createElement("img");
+    img1.src = "/Users/aliia/Desktop/inai/sport.jpeg";
+
+
+    async function webStop() {
+      await webcam.stop()
+      
+    }
+
+    async function loop() {
+        webcam.update();
+        await predict();
+        window.requestAnimationFrame(loop);
+    }
+
+
+    async function init() {
+      
+      const modelURL = URL + "model.json";
+      const metadataURL = URL + "metadata.json";
+      model = await tmImage.load(modelURL, metadataURL);
+      maxPredictions = model.getTotalClasses();
+
+      const flip = true; // whether to flip the webcam
+      webcam = new tmImage.Webcam(500, 300, flip); // width, height, flip
+      await webcam.setup(); // request access to the webcam
+      await webcam.play();
+      window.requestAnimationFrame(loop);
+
+      document.getElementById("webcam-container").appendChild(img1);
+      labelContainer = document.getElementById("label-container");
+      for (let i = 0; i < maxPredictions; i++) { // and class labels
+          labelContainer.appendChild(document.createElement("div"));
+      }
+  }
+
+    
+
+    async function predict() {
+        const prediction = await model.predict(img1);
+        for (let i = 0; i < maxPredictions; i++) {
+            const classPrediction =
+                prediction[i].className + ": " + Math.round(prediction[i].probability.toFixed(2)*100);
+            labelContainer.childNodes[i].innerHTML = classPrediction;
+        }
+    }
+</script>
+</div> -->
+
+
+    <!-- INPUT -->
+    <div class="mainInputDiv">
+      <h2>UPLOAD PHOTO</h2>
+      <div class="input_div">
+        <input type="text" name="url" id="add-img-inp">
+        <button onclick="init2()" class="submit">Submit</button>
+        <img id="output" width="200" />	
+        <div id="label2"></div>
+
+        
+      </div>
+
+      <script>
+        let imag = document.querySelector("#output");
+        let inputUrl = document.querySelector("#add-img-inp")
+        let btnS = document.querySelector(".submit")
+        imag.src = ''
+
+        btnS.addEventListener('click', () => imag.src = inputUrl.value)
+
+        
+      </script>
+
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+<script type="text/javascript">
+    const URL2 = "https://teachablemachine.withgoogle.com/models/aV8um9gdY/";
+
+    let model2, label2, maxPredictions2;
+
+    async function init2() {
+                const modelURL = URL + "model.json";
+                const metadataURL = URL + "metadata.json";
+        
+                model = await tmImage.load(modelURL, metadataURL);
+                maxPredictions2 = model.getTotalClasses();
+                    
+                labelContainer = document.getElementById("label2");
+                for (let i = 0; i < maxPredictions2; i++) { 
+                    label2.appendChild(document.createElement("div"));
+                }
+            }
+
+    async function predict2() {
+                const prediction = await model2.predict2(imag);
+                for (let i = 0; i < maxPredictions2; i++) {
+                    const classPrediction =
+                        prediction[i].className + ": " + Math.round(prediction[i].probability.toFixed(2)*100);
+                        label2.childNodes[i].innerHTML = classPrediction;
+                }
+            }
+  
+</script>
+
+
+
+      <h2>WEB CAMERA</h2>
+      <div class="input_div2">
+        <button onclick="init()">Web</button>
+        <button id="stop" onclick="webStop()">Stop</button>
+      </div>
+
+      <!-- webcam js -->
+      <div class="webDiv">
+        <div id="webcam-container"></div>
+        <div id="label-container"></div>
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+        <script type="text/javascript">
+         
+            const URL = "https://teachablemachine.withgoogle.com/models/aV8um9gdY/";
+        
+            let model, webcam, labelContainer, maxPredictions;
+        
+            async function init() {
+                const modelURL = URL + "model.json";
+                const metadataURL = URL + "metadata.json";
+        
+                model = await tmImage.load(modelURL, metadataURL);
+                maxPredictions = model.getTotalClasses();
+        
+                const flip = true;
+                webcam = new tmImage.Webcam(200, 200, flip);
+                await webcam.setup();
+                await webcam.play();
+                window.requestAnimationFrame(loop);
+        
+                document.getElementById("webcam-container").appendChild(webcam.canvas);
+                labelContainer = document.getElementById("label-container");
+                for (let i = 0; i < maxPredictions; i++) { 
+                    labelContainer.appendChild(document.createElement("div"));
+                }
+            }
+        
+            async function loop() {
+                webcam.update();
+                await predict();
+                window.requestAnimationFrame(loop);
+            }
+        
+            async function webStop() {
+              await webcam.stop()
+              
+            }
+        
+            async function predict() {
+                const prediction = await model.predict(webcam.canvas);
+                for (let i = 0; i < maxPredictions; i++) {
+                    const classPrediction =
+                        prediction[i].className + ": " + Math.round(prediction[i].probability.toFixed(2)*100);
+                    labelContainer.childNodes[i].innerHTML = classPrediction;
+                }
+            }
+        </script>
+        </div>
+    </div>
+
+    <!-- OUTPUT -->
+    <div class="output"></div>
+
+    <!-- FOOTER -->
+    <div>
+      <div class="footerFirst">
+        <a href="/">
+          <div class="icon iconFill">
+            <i class="fa-brands fa-instagram"></i>
+          </div>
+        </a>
+
+        <a href="/">
+          <div class="icon iconEnter">
+            <i class="fa-brands fa-youtube"></i>
+          </div>
+        </a>
+
+        <a href="/">
+          <div class="icon iconCollapse">
+            <i class="fa-brands fa-facebook"></i>
+          </div>
+        </a>
+
+        <a href="/">
+          <div class="icon iconRotate">
+            <i class="fa-brands fa-twitter"></i>
+          </div>
+        </a>
+      </div>
+      <div class="footer">
+        <p class="companyName">© 2023 HELLCATS</p>
+        <ul class="footerUl">
+          <li>
+            <a href="/">Details</a>
+            <span>|</span>
+          </li>
+          <li>
+            <a href="/">Policy</a>
+            <span>|</span>
+          </li>
+
+          <li>
+            <a href="/">About</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- rec -->
+    <!-- <script type="module">
+    
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-app.js";
+      import { getFirestore } from "firebase/firestore";
+      import { collection, getDocs } from "firebase/firestore"; 
+    
+      const firebaseConfig = {
+        apiKey: "AIzaSyBZDmyJ9EdeEbGXrDz74XF-rA9iwxcDm9Q",
+        authDomain: "hackathon-test-2f265.firebaseapp.com",
+        projectId: "hackathon-test-2f265",
+        storageBucket: "hackathon-test-2f265.appspot.com",
+        messagingSenderId: "603673215709",
+        appId: "1:603673215709:web:81a2c0545682e32cd29134"
+      };
+    
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+    
+      const querySnapshot = await getDocs(collection(db, "shops"));
+      querySnapshot.forEach((doc) => {
+        console.log(`${doc.id} => ${doc.data()}`);
+      });
+    
+    
+    </script> -->
+
+    <!-- <script src="./main.js"></script> -->
+  </body>
+</html>

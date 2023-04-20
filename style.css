@@ -1,0 +1,321 @@
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  flex-direction: column;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar {
+  width: 100%;
+  height: 60px;
+  box-shadow: 5px 4px 4px 2px gray;
+  border-bottom: gray;
+  background-color: rgb(255, 255, 255);
+  margin-bottom: 13px;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  margin-left: 25px;
+  font-size: 25px;
+}
+
+input[type="file"]::file-selector-button {
+  height: 40px;
+  width: 150px;
+  background-color: white;
+  border: 1px solid gray;
+  color: black;
+  font-weight: lighter;
+  letter-spacing: 2px;
+  font-size: 15px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+input[type="file"]::file-selector-button:hover {
+  background: #000000;
+  color: white;
+}
+
+.input_div {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 30px;
+  margin-bottom: 70px;
+}
+
+.input_div2 {
+  width: 93%;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  margin-left: 50px;
+}
+
+.mainInputDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#stop {
+  margin-left: 430px;
+}
+
+.submit {
+  background-color: white;
+  color: black;
+}
+
+.submit:hover {
+  background-color: black;
+  color: white;
+}
+
+button {
+  height: 40px;
+  width: 160px;
+  background-color: black;
+  color: white;
+  /* background-color: white; */
+  border: 1px solid gray;
+  /* color: black; */
+  font-weight: lighter;
+  letter-spacing: 2px;
+  font-size: 15px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+button:hover {
+  color: black;
+  background-color: white;
+  /* background-color: black;
+  color: white; */
+  transition: 0.4s;
+}
+
+.footer {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: light;
+  height: calc(100% - 60px);
+  background-color: rgb(175, 175, 175);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 50px;
+}
+
+.footerFirst {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(243, 242, 242);
+  height: 70px;
+  margin-top: 40px;
+}
+
+.companyName {
+  font-size: 14px;
+  color: rgb(87, 86, 86);
+}
+
+.footerUl {
+  list-style: none;
+  display: flex;
+}
+
+.footerUl > li {
+  margin-left: 10px;
+}
+
+.footerUl > li > a {
+  color: rgb(87, 86, 86);
+}
+
+.footerUl > li > a:hover {
+  color: rgb(89, 125, 243);
+}
+
+.footerUl > li > span {
+  margin-left: 10px;
+}
+
+.icon {
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  margin-left: 20px;
+  margin-right: 20px;
+  border-radius: 30px;
+  overflow: hidden;
+}
+
+.icon::before,
+.icon::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  transition: all 0.25s ease;
+  border-radius: 30px;
+}
+
+.icon i {
+  position: relative;
+  color: rgb(0, 0, 0);
+  font-size: 20px;
+  margin-top: 10px;
+  margin-left: 10px;
+
+  transition: all 0.25s ease;
+}
+
+.iconFill {
+  margin-left: 11px;
+}
+
+.iconEnter {
+  margin-left: 8px;
+}
+
+.iconCollapse {
+  margin-left: 10px;
+}
+
+.iconRotate {
+  margin-left: 10px;
+}
+
+.iconFill::before {
+  transition-duration: 0.5s;
+  box-shadow: inset 0 0 0 1px rgba(165, 165, 165, 0.75);
+}
+
+.iconFill:hover::before {
+  box-shadow: inset 0 0 0 60px rgba(165, 165, 165, 0.75);
+}
+
+.iconEnter::after {
+  box-shadow: inset 0 0 0 1px rgba(165, 165, 165, 0.75);
+}
+
+.iconEnter::before {
+  border-radius: 0;
+  margin-left: -100%;
+  box-shadow: inset 0 0 0 60px rgba(165, 165, 165, 0.75);
+}
+
+.iconEnter:hover::before {
+  margin-left: 0;
+}
+
+.iconCollapse::before {
+  border-radius: 0;
+}
+
+.iconCollapse:hover::before {
+  box-shadow: inset 0 30px 0 0 rgba(165, 165, 165, 0.75),
+    inset 0 -30px 0 0 rgba(165, 165, 165, 0.75);
+}
+
+.iconCollapse::after {
+  box-shadow: inset 0 0 0 1px rgba(165, 165, 165, 0.75);
+}
+
+.iconRotate {
+  box-shadow: inset 0 0 0 1px rgba(165, 165, 165, 0.75);
+}
+
+.iconRotate::after,
+.iconRotate::before {
+  border: 0px solid transparent;
+}
+
+.iconRotate:hover::before {
+  transition: border-top-width 0.3s ease, border-top-color 0.3s ease;
+  border-width: 60px;
+  border-top-color: rgba(165, 165, 165, 0.75);
+}
+
+.iconRotate:hover::after {
+  transition: border-left-width 0.3s ease, border-left-color 0.3s ease;
+  border-width: 60px;
+  border-left-color: rgba(165, 165, 165, 0.75);
+}
+
+.iconRotate:hover {
+  transition: background 0.001s ease 0.3s;
+  background: rgba(165, 165, 165, 0.75);
+}
+
+.iconRotate i {
+  z-index: 1;
+}
+
+.firstSection {
+  background-image: url(./home.jpeg);
+  /* background-image: url(https://content.asos-media.com/-/media/homepages/unisex/generic-hp/jan-2023/generic-hp/generic-hp-desktop-unisex-1400x698.jpg); */
+  /* background-image: url(../../images/Снимок\ экрана\ 2023-03-24\ в\ 21.25.48.png); */
+  height: 550px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 20px;
+}
+
+.mainText {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.bigText {
+  font-size: 60px;
+  color: black;
+  background-color: white;
+  font-weight: bolder;
+  margin-bottom: 0;
+}
+
+.smallText {
+  margin-top: 0;
+  font-size: 25px;
+  color: black;
+  background-color: white;
+  font-weight: lighter;
+}
+
+.webDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#webcam-container {
+  margin-top: 20px;
+}
+
+#label-container {
+  margin-top: 10px;
+  font-size: 30px;
+  letter-spacing: 2px;
+}
