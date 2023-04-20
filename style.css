@@ -50,9 +50,14 @@ input[type="file"]::file-selector-button:hover {
 .input_div {
   width: 100%;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   margin-top: 30px;
   margin-bottom: 70px;
+  margin-left: 280px;
+}
+
+#output {
+  border: 1px solid black;
 }
 
 .input_div2 {
