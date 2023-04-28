@@ -71,6 +71,7 @@
             const URL = "https://teachablemachine.withgoogle.com/models/aV8um9gdY/";
         
             let model, webcam, labelContainer, maxPredictions;
+            let ansanswerStylewerStyle = null;
         
             async function init() {
                 const modelURL = URL + "model.json";
@@ -81,7 +82,7 @@
         
                 const flip = true;
                 webcam = new tmImage.Webcam(200, 200, flip);
-                await webcam.setup();
+                await webcam.setup({ facingMode: "environment" });
                 await webcam.play();
                 window.requestAnimationFrame(loop);
         
@@ -111,13 +112,13 @@
                     let weight_of_class = Math.round(prediction[i].probability.toFixed(2)*100);
                     const classPrediction =
                         prediction[i].className + ": " + weight_of_class;
-                    labelContainer.childNodes[i].innerHTML = classPrediction;
+                        labelContainer.childNodes[i].innerHTML = classPrediction;
                         if (weight_of_class > max1) {
-
                           max1 = weight_of_class;
                           index1 = i;
                           }
                 }
+                answerStyle = prediction[index1].className.toLowerCase();
                 console.log(prediction[index1].className.toLowerCase());
                 let answer = prediction[index1].className.toLowerCase()
                 return answer
@@ -179,8 +180,8 @@
 
     <!-- rec -->
     <script type="module">
-       import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
-  import { getFirestore, query, where, doc, getDoc, getDocs, collection } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js";
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
+      import { getFirestore, query, where, doc, getDoc, getDocs, collection } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js";
     
       const firebaseConfig = {
         apiKey: "AIzaSyBZDmyJ9EdeEbGXrDz74XF-rA9iwxcDm9Q",
@@ -203,7 +204,7 @@
 
 
       // const shops = collection(db, "shops")
-      const q = query(collection(db, "shops"), where("type", "==", "sport"))
+      const q = query(collection(db, "shops"), where("type", "==", answerStyle?.toLowerCase))
 
        async function shopsB(params) {
          const querySnapshot = await getDocs(q);
