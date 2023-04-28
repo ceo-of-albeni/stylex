@@ -82,7 +82,7 @@
 
           const flip = true;
           webcam = new tmImage.Webcam(200, 200, flip);
-          await webcam.setup({ facingMode: "environment" });
+          await webcam.setup({ deviceId: devices[0].deviceId });
           await webcam.play();
           window.requestAnimationFrame(loop);
 
