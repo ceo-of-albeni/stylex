@@ -82,8 +82,17 @@
 
           const flip = true;
           webcam = new tmImage.Webcam(200, 200, flip);
-          await webcam.setup({ deviceId: devices[0].deviceId });
-          await webcam.play();
+          try {
+            await webcam.setup({ deviceId: devices[0].deviceId });
+
+          }
+          catch {
+            await webcam.setup();
+          }
+          finally {
+            await webcam.play();
+          }
+
           window.requestAnimationFrame(loop);
 
           document.getElementById("webcam-container").appendChild(webcam.canvas);
@@ -197,8 +206,8 @@
     let clothes = document.querySelector(".clothes") //p s objectami
     let btnDb = document.querySelector(".dbdb")
     // const shops = collection(db, "shops")
-    
-    
+
+
 
     async function shopsB(params) {
       if (answerStyle) {
