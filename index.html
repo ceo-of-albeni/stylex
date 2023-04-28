@@ -197,10 +197,12 @@
     let clothes = document.querySelector(".clothes") //p s objectami
     let btnDb = document.querySelector(".dbdb")
     // const shops = collection(db, "shops")
-    const q = query(collection(db, "shops"), where("type", "==", answerStyle?.toLowerCase))
+    
+    
 
     async function shopsB(params) {
       if (answerStyle) {
+        const q = query(collection(db, "shops"), where("type", "==", answerStyle?.toLowerCase))
         clothes.innerHTML = ''
         const querySnapshot = await getDocs(q);
         querySnapshot.forEach((doc) => {
