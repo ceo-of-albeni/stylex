@@ -211,7 +211,7 @@
 
     async function shopsB(params) {
       if (answerStyle) {
-        const q = query(collection(db, "shops"), where("type", "==", answerStyle?.toLowerCase))
+        const q = query(collection(db, "shops"), where("type", "==", answerStyle?.toLowerCase()))
         clothes.innerHTML = ''
         const querySnapshot = await getDocs(q);
         querySnapshot.forEach((doc) => {
