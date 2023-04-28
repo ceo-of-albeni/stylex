@@ -1,229 +1,220 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./style.css" />
-    <script src="https://kit.fontawesome.com/20b729f850.js" crossorigin="anonymous"></script>
-    <title>KURSEX</title>
-  </head>
-  <body>
-    <!-- NAVBAR -->
-    <div class="navbar">
-      <p class="logo">STYLEX。</p>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./style.css" />
+  <script src="https://kit.fontawesome.com/20b729f850.js" crossorigin="anonymous"></script>
+  <title>KURSEX</title>
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <div class="navbar">
+    <p class="logo">STYLEX。</p>
+  </div>
+
+  <!-- BODY  -->
+  <div class="firstSection">
+    <div class="mainText">
+      <p class="bigText">CHOOSE STYLEX</p>
+      <!-- <p class="smallText">NYAAAAAAAH!^w^</p> -->
     </div>
-
-    <!-- BODY  -->
-    <div class="firstSection">
-      <div class="mainText">
-        <p class="bigText">CHOOSE STYLEX</p>
-        <!-- <p class="smallText">NYAAAAAAAH!^w^</p> -->
-      </div>
-    </div>
-    </div>
+  </div>
+  </div>
 
 
 
-    <!-- INPUT -->
-    <div class="mainInputDiv">
-      <h2>UPLOAD PHOTO</h2>
-      <div class="input_div">
-        <input type="text" name="url" id="add-img-inp">
-        <button class="submit">Submit</button>
-        <img id="output" width="200" />	
-        <!-- <div id="label2"></div> -->
+  <!-- INPUT -->
+  <div class="mainInputDiv">
+    <!-- <h2>UPLOAD PHOTO</h2>
+    <div class="input_div">
+      <input type="text" name="url" id="add-img-inp">
+      <button class="submit">Submit</button>
+      <img id="output" width="200" />
+    </div> -->
 
-        
-      </div>
+    <script>
+      let imag = document.querySelector("#output");
+      let inputUrl = document.querySelector("#add-img-inp")
+      let btnS = document.querySelector(".submit")
+      imag.src = ''
 
-      <script>
-        let imag = document.querySelector("#output");
-        let inputUrl = document.querySelector("#add-img-inp")
-        let btnS = document.querySelector(".submit")
-        imag.src = ''
-
-        btnS.addEventListener('click', () => imag.src = inputUrl.value)
-
-        
-      </script>
-<!-- <div id="label2"></div> -->
-<!-- <div id="webcamm"></div> -->
-
-      <h2>WEB CAMERA</h2>
-      <div class="input_div2">
-        <button onclick="init()">Web</button>
-        <button id="stop" onclick="webStop()">Stop</button>
-      </div>
-      <button class="dbdb">Recomendations</button>
-      <div class="clothes">
-      </div>
-
-      <!-- webcam js -->
-      <div class="webDiv">
-        <div id="webcam-container"></div>
-        <div id="label-container"></div>
-        <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
-        <script type="text/javascript">
-          // let typeOFsd = ''
-         
-            const URL = "https://teachablemachine.withgoogle.com/models/aV8um9gdY/";
-        
-            let model, webcam, labelContainer, maxPredictions;
-            let answerStyle = null;
-        
-            async function init() {
-                const modelURL = URL + "model.json";
-                const metadataURL = URL + "metadata.json";
-        
-                model = await tmImage.load(modelURL, metadataURL);
-                maxPredictions = model.getTotalClasses();
-        
-                const flip = true;
-                webcam = new tmImage.Webcam(200, 200, flip);
-                await webcam.setup({ facingMode: "environment" });
-                await webcam.play();
-                window.requestAnimationFrame(loop);
-        
-                document.getElementById("webcam-container").appendChild(webcam.canvas);
-                labelContainer = document.getElementById("label-container");
-                for (let i = 0; i < maxPredictions; i++) { 
-                    labelContainer.appendChild(document.createElement("div"));
-                }
-            }
-        
-            async function loop() {
-                webcam.update();
-                await predict();
-                window.requestAnimationFrame(loop);
-            }
-        
-            async function webStop() {
-              await webcam.stop()
-              
-            }
-
-            let max1 = 0;
-            let index1 = 0;
-            async function predict() {
-                const prediction = await model.predict(webcam.canvas);
-                for (let i = 0; i < maxPredictions; i++) {
-                    let weight_of_class = Math.round(prediction[i].probability.toFixed(2)*100);
-                    const classPrediction =
-                        prediction[i].className + ": " + weight_of_class;
-                        labelContainer.childNodes[i].innerHTML = classPrediction;
-                        if (weight_of_class > max1) {
-                          max1 = weight_of_class;
-                          index1 = i;
-                          }
-                }
-                answerStyle = prediction[index1].className.toLowerCase();
-                console.log(prediction[index1].className.toLowerCase());
-                let answer = prediction[index1].className.toLowerCase()
-                return answer
-                // return  typeOFsd
-            }
-
-        </script>
-        </div>
-    </div>
-
-    <!-- OUTPUT -->
-    <div class="output"></div>
-
-    <!-- FOOTER -->
-    <div>
-      <div class="footerFirst">
-        <a href="/">
-          <div class="icon iconFill">
-            <i class="fa-brands fa-instagram"></i>
-          </div>
-        </a>
-
-        <a href="/">
-          <div class="icon iconEnter">
-            <i class="fa-brands fa-youtube"></i>
-          </div>
-        </a>
-
-        <a href="/">
-          <div class="icon iconCollapse">
-            <i class="fa-brands fa-facebook"></i>
-          </div>
-        </a>
-
-        <a href="/">
-          <div class="icon iconRotate">
-            <i class="fa-brands fa-twitter"></i>
-          </div>
-        </a>
-      </div>
-      <div class="footer">
-        <p class="companyName">© 2023 HELLCATS</p>
-        <ul class="footerUl">
-          <li>
-            <a href="/">Details</a>
-            <span>|</span>
-          </li>
-          <li>
-            <a href="/">Policy</a>
-            <span>|</span>
-          </li>
-
-          <li>
-            <a href="/">About</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- rec -->
-    <script type="module">
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
-      import { getFirestore, query, where, doc, getDoc, getDocs, collection } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js";
-    
-      const firebaseConfig = {
-        apiKey: "AIzaSyBZDmyJ9EdeEbGXrDz74XF-rA9iwxcDm9Q",
-        authDomain: "hackathon-test-2f265.firebaseapp.com",
-        projectId: "hackathon-test-2f265",
-        storageBucket: "hackathon-test-2f265.appspot.com",
-        messagingSenderId: "603673215709",
-        appId: "1:603673215709:web:81a2c0545682e32cd29134"
-      };
-    
-      const app = initializeApp(firebaseConfig);
-      const db = getFirestore(app);
-
-      let clothes = document.querySelector(".clothes") //p s objectami
-      clothes.innerHTML = ''
-
-      let btnDb = document.querySelector(".dbdb")
+      btnS.addEventListener('click', () => imag.src = inputUrl.value)
 
 
-
-
-      // const shops = collection(db, "shops")
-      const q = query(collection(db, "shops"), where("type", "==", answerStyle?.toLowerCase))
-
-       async function shopsB(params) {
-         const querySnapshot = await getDocs(q);
-         querySnapshot.forEach((doc) => {
-           clothes.innerHTML += `${doc.data().name}</br>`
-           console.log(doc.data().name);
-           console.log(`${doc.id} => ${doc.data()}`);
-         });
-       }
-
-       btnDb.addEventListener("click", shopsB())
-
-
-      // dbdb.addEventListener("click", rendercon())
-    
-    
     </script>
+    <!-- <div id="label2"></div> -->
+    <!-- <div id="webcamm"></div> -->
 
-    <!-- <script src="./main.js"></script> -->
-  </body>
+    <h2>WEB CAMERA</h2>
+    <div>
+      <button onclick="init()">Web</button>
+      <button onclick="webStop()">Stop</button>
+    </div>
+    <button class="dbdb">Recomendations</button>
+    <div class="clothes">
+    </div>
+
+    <!-- webcam js -->
+    <div class="webDiv">
+      <div id="webcam-container"></div>
+      <div id="label-container"></div>
+      <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+      <script
+        src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+      <script type="text/javascript">
+        // let typeOFsd = ''
+
+        const URL = "https://teachablemachine.withgoogle.com/models/aV8um9gdY/";
+
+        let model, webcam, labelContainer, maxPredictions;
+        let answerStyle = null;
+
+        async function init() {
+          const modelURL = URL + "model.json";
+          const metadataURL = URL + "metadata.json";
+
+          model = await tmImage.load(modelURL, metadataURL);
+          maxPredictions = model.getTotalClasses();
+
+          const flip = true;
+          webcam = new tmImage.Webcam(200, 200, flip);
+          await webcam.setup({ facingMode: "environment" });
+          await webcam.play();
+          window.requestAnimationFrame(loop);
+
+          document.getElementById("webcam-container").appendChild(webcam.canvas);
+          labelContainer = document.getElementById("label-container");
+          for (let i = 0; i < maxPredictions; i++) {
+            labelContainer.appendChild(document.createElement("div"));
+          }
+        }
+
+        async function loop() {
+          webcam.update();
+          await predict();
+          window.requestAnimationFrame(loop);
+        }
+
+        async function webStop() {
+          await webcam.stop()
+
+        }
+
+        let max1 = 0;
+        let index1 = 0;
+        async function predict() {
+          const prediction = await model.predict(webcam.canvas);
+          for (let i = 0; i < maxPredictions; i++) {
+            let weight_of_class = Math.round(prediction[i].probability.toFixed(2) * 100);
+            const classPrediction =
+              prediction[i].className + ": " + weight_of_class;
+            labelContainer.childNodes[i].innerHTML = classPrediction;
+            if (weight_of_class > max1) {
+              max1 = weight_of_class;
+              index1 = i;
+            }
+          }
+          answerStyle = prediction[index1].className.toLowerCase();
+          console.log(prediction[index1].className.toLowerCase());
+          let answer = prediction[index1].className.toLowerCase()
+          return answer
+          // return  typeOFsd
+        }
+
+      </script>
+    </div>
+  </div>
+
+  <!-- OUTPUT -->
+  <div class="output"></div>
+
+  <!-- FOOTER -->
+  <div>
+    <div class="footerFirst">
+      <a href="/">
+        <div class="icon iconFill">
+          <i class="fa-brands fa-instagram"></i>
+        </div>
+      </a>
+
+      <a href="/">
+        <div class="icon iconEnter">
+          <i class="fa-brands fa-youtube"></i>
+        </div>
+      </a>
+
+      <a href="/">
+        <div class="icon iconCollapse">
+          <i class="fa-brands fa-facebook"></i>
+        </div>
+      </a>
+
+      <a href="/">
+        <div class="icon iconRotate">
+          <i class="fa-brands fa-twitter"></i>
+        </div>
+      </a>
+    </div>
+    <div class="footer">
+      <p class="companyName">© 2023 HELLCATS</p>
+      <ul class="footerUl">
+        <li>
+          <a href="/">Details</a>
+          <span>|</span>
+        </li>
+        <li>
+          <a href="/">Policy</a>
+          <span>|</span>
+        </li>
+
+        <li>
+          <a href="/">About</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- rec -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
+    import { getFirestore, query, where, doc, getDoc, getDocs, collection } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBZDmyJ9EdeEbGXrDz74XF-rA9iwxcDm9Q",
+      authDomain: "hackathon-test-2f265.firebaseapp.com",
+      projectId: "hackathon-test-2f265",
+      storageBucket: "hackathon-test-2f265.appspot.com",
+      messagingSenderId: "603673215709",
+      appId: "1:603673215709:web:81a2c0545682e32cd29134"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    let clothes = document.querySelector(".clothes") //p s objectami
+    let btnDb = document.querySelector(".dbdb")
+    // const shops = collection(db, "shops")
+    const q = query(collection(db, "shops"), where("type", "==", answerStyle?.toLowerCase))
+
+    async function shopsB(params) {
+      if (answerStyle) {
+        clothes.innerHTML = ''
+        const querySnapshot = await getDocs(q);
+        querySnapshot.forEach((doc) => {
+          clothes.innerHTML += `${doc.data().name}</br>`
+          console.log(doc.data().name);
+          console.log(`${doc.id} => ${doc.data()}`);
+        });
+      }
+    }
+
+    btnDb.addEventListener("click", shopsB())
+      // dbdb.addEventListener("click", rendercon())
+  </script>
+  <!-- <script src="./main.js"></script> -->
+</body>
+
 </html>
-
